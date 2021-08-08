@@ -28,15 +28,7 @@ def remove_extra_chars(text):
     if re.findall(url_pattern, text, re.IGNORECASE):
         text = re.sub(url_pattern,"",text)
 
-    # if number exists in the text
-    # if re.findall(r"(\d+)", text, re.IGNORECASE):
-    #     text = re.sub(r"(\d+)","",text)
 
-    # if hashtag exists in the text
-    # if re.findall(r"#(\w+)", text):
-    #     text = re.sub(r"#(\w+)","",text)
-
-    # if username exists in the text
     if re.findall(r"@(\w+[.]*\b)", text):
         text = re.sub(r"@(\w+[.]*\b)","",text)
 
@@ -56,9 +48,6 @@ def remove_extra_chars(text):
 
     text = unifing_alphabets(text)
 
-    # if text contains duplicate letters
-    # with open(os.getcwd()+"/resources/words_with_2_duplicate_letters.txt", encoding="utf-8") as tfile:
-    #     certain_words = [line.strip() for line in tfile.readlines()]
     duplicate_letter_pattern = re.compile(r"(.)\1{2,}")
     text_with_pattern2 = duplicate_letter_pattern.sub(r"\1\1", text)
     differences2 = [word for word in text_with_pattern2.split(" ") if word not in text.split(" ")]
@@ -69,8 +58,6 @@ def remove_extra_chars(text):
         else:
             text = duplicate_letter_pattern.sub(r"\1", text)
 
-    # if text contains #
-    # text = re.sub(r'\s#\s', '', text)
 
     text = (" ").join([word.strip() for word in text.split()])
     return text
@@ -131,20 +118,7 @@ def unifing_alphabets(text):
 
 train_dataset_path ="social_train.txt"
 test_dataset_path= "social_test.txt"
-#
-# model = fasttext.train_supervised(train_dataset_path,
-#                                  dim=100,
-#                                  lr=2.0, #[0.1 - 1.0]
-#                                  loss="hs",
-#                                  wordNgrams=7, #[1 - 5]
-#                                  ws=3,
-#                                  epoch=100, #[5 - 50]
-#                                  minn=3,#3
-#                                  maxn=6,#6
-#                                  lrUpdateRate=100,
-#                                  neg=10,
-#                                  t=0.0001
-#                                  )
+
 
 model = fasttext.train_supervised(train_dataset_path,
                                  dim=100,
@@ -166,8 +140,6 @@ model.quantize(input=train_dataset_path,
                retrain=True,
                epoch=1,
                cutoff=100000
-               # dsub=,
-               # qout=
                )
 
 
@@ -176,7 +148,6 @@ model.save_model(quantized_model_path)
 
 print("test: ", model.test(test_dataset_path))
 
-#
 #number label
 labels = set()
 with open("social_test.txt", 'r') as f:
@@ -195,32 +166,6 @@ with open("social_train.txt", 'r') as f:
 
 print(labels,"train")
 
-#
-# ##### chek the terminal empty ro
-# # sed -ne '/^__label__/d;p' culture_complile.txt
-#
-#
-# import numpy as np
-# import pandas as pd
-# # import re
-# #
-# # data = "culture_complile.txt"
-# #
-# # a = []
-# # counter=0
-# # with open(data, encoding="utf-8") as data_txt:
-# #     all_lines = data_txt.readlines()
-# #
-# # for line in all_lines:
-# #     labels = re.compile(r'__label__\d\d')
-# #     mo = labels.search(line)
-# #     counter+=1
-# #     print(mo,"dcdsfsdgdgdfgfg")
-# #     print(counter)
-#
-#
-#
-#confusion_matrix
 
 fasttext_model = fasttext.load_model("social.ftz")
 count=0
@@ -232,31 +177,15 @@ with open ('social_test.txt', 'r') as f :
         # print(y_true[line])
         # print(line)
         label = line.split(' ', maxsplit=1)[0].strip()
-        # print(label)
-        # dd=label[:9]
-        # labels = re.compile(r'__label__\d\d')
-        # if label[:9] == dd:
-        #     # print(labels)
-        #     print(count)
+
         y_true.append(label)
-        #
-        # print(y_true)
+
         sentence = line.split(' ', maxsplit=1)[1].strip()
-        # print(sentence)
-        # start_time = datetime.now()
 
         outputs = fasttext_model.predict(sentence)
-        # print(outputs,"ffffffffff")
+      
         y_pred.append(outputs[0])
-        # print(y_pred,"FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF")
 
-        # if label!= outputs:
-        #     print("ffffff")
-        #     count += 1
-        #     print(count)
-            # with open('predict1.csv', 'a+') as f:
-            #     writer = csv.writer(f)
-            #     writer.writerow([sentence, label, outputs])
 
 
 
