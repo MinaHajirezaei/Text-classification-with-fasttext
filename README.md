@@ -1,4 +1,4 @@
-# Text_Classification
+# Text_Classification with fasttext model
 
 
 
