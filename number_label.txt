@@ -1,0 +1,65 @@
+دسته اصلی	زیردسته
+"arts_media" =1	arts_media,cinema,6
+	arts_media,radio-tv,35
+	arts_media,music,27
+	arts_media,media,25
+	
+"culture"=2	others_culture,29
+	culture,thought,38
+	culture,quran,34
+	culture,mosque,26
+	culture,history,18
+	culture,hajj-pilgrimage-waqf,17
+	culture,general-culture,15
+	culture,book,4
+	
+	
+"economy"=3	economy,business,5
+	economy,stock,37
+	economy,macroeconomics,23
+	economy,energy,12
+	economy,civil,7
+	economy,banking,3
+	economy,agriculture,1
+	economy,world-economy,41
+	economy,economic-warfare,10
+	economy,occupation,28
+	economy,companies-news,8
+	
+"politics"=4	politics,parliament,33
+	politics,government,16
+	politics,academic-formations,0
+	politics,others_politics,30
+	Parties,44
+	Defense,45
+	Leadership,46
+	
+"scientific_academic"=5	scientific_academic,research,36
+	scientific_academic,knowledge,21
+	scientific_academic,iran-science,19
+	scientific_academic,education,11
+	scientific_academic,others_scientific_academic,31
+	scientific_academic,world-science,42
+	scientific_academic,it,20
+	scientific_academic,culture,9
+	
+"sports"=6	sports,football-iran,13
+	sports,football-world,14
+	sports,martial-arts,24
+	sports,ballgames,2
+	sports,others_sports,32
+	sports,women,39
+	sports,world,40
+	sports,wrestling-powerlifting,43
+	
+Social=7	Welfare_social_harms,47
+	Health,48
+	Disciplinary_incidents,49
+	Civic,50
+	Legal and judicial,51
+	Education,52
+	Socialـresponsibilities,53
+	Others,54
+	Environment_Tourism,55
+	Womenـyouth,56
+	Tavankhahـgroups,57
