@@ -116,8 +116,8 @@ def unifing_alphabets(text):
 
 
 
-train_dataset_path ="social_train.txt"
-test_dataset_path= "social_test.txt"
+train_dataset_path ="fastai_7lbl_train2.txt"
+test_dataset_path= "fastai_7lbl_test2.txt"
 
 
 model = fasttext.train_supervised(train_dataset_path,
@@ -143,14 +143,14 @@ model.quantize(input=train_dataset_path,
                )
 
 
-quantized_model_path = "social.ftz"
+quantized_model_path = "fastai_7lbl.ftz"
 model.save_model(quantized_model_path)
 
 print("test: ", model.test(test_dataset_path))
 
 #number label
 labels = set()
-with open("social_test.txt", 'r') as f:
+with open("fastai_7lbl_test2.txt", 'r') as f:
     for line in f:
         # print(line)
         labels.add(line.split(' ')[0])
@@ -159,7 +159,7 @@ print(labels,"test")
 
 
 labels = set()
-with open("social_train.txt", 'r') as f:
+with open("fastai_7lbl_train2.txt", 'r') as f:
     for line in f:
         # print(line)
         labels.add(line.split(' ')[0])
@@ -167,11 +167,11 @@ with open("social_train.txt", 'r') as f:
 print(labels,"train")
 
 
-fasttext_model = fasttext.load_model("social.ftz")
+fasttext_model = fasttext.load_model("fastai_7lbl.ftz")
 count=0
 y_pred=[]
 y_true=[]
-with open ('social_test.txt', 'r') as f :
+with open ('fastai_7lbl_test2.txt', 'r') as f :
     # print(f)
     for line in f:
         # print(y_true[line])
@@ -243,7 +243,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     return ax
 
 
-class_names = ['__label__47,', '__label__48,', '__label__49,', '__label__50,', '__label__51,', '__label__52,', '__label__53,', '__label__54,','__label__55,','__label__56,','__label__57,']
+class_names = ['__label__4', '__label__7', '__label__5', '__label__1', '__label__6', '__label__2', '__label__3']
 
 # Plot non-normalized confusion matrix
 plot_confusion_matrix(y_true, y_pred, classes=class_names,
